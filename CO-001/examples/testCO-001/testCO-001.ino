@@ -1,3 +1,12 @@
+/* AECL_CO001_M Module Testing Code for Arduino 
+
+MIT license
+written by Rododo ,Taiwan. http://www.facebook.com/rododo.farm/
+
+Designed for LASS(location aware sensing system)
+*/
+
+
 #include <CO-001.h>
 
 CO001 myCo;

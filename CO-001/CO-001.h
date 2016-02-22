@@ -1,3 +1,11 @@
+/* AECL_CO_001M Module Library for Arduino 
+
+MIT license
+written by Rododo ,Taiwan. http://www.facebook.com/rododo.farm/
+
+Designed for LASS(location aware sensing system)
+*/
+
 #ifndef AECL_CO_001_H
 #define AECL_CO_001_H
 #include <inttypes.h>
