@@ -4,6 +4,7 @@ CO001 myCo;
 void setup() {
   // put your setup code here, to run once:
 Wire.begin();  // Control this on your own
+Serial.begin(9600);
 }
 
 void loop() {
