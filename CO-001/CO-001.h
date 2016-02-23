@@ -31,7 +31,7 @@ int16_t CO001::getValue(void){
     int testtry;
     while(Wire.available() < 2) {
       delay(1);
-      if(testtry++ >=100){
+      if(testtry++ >=MAX_RETRYCOUNT){
        return -1;
       }
     }
