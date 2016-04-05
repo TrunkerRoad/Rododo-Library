@@ -7,13 +7,15 @@ Designed for LASS(location aware sensing system)
 */
 
 //NOTICE:DO NOT CHANGE ORDER
+
 #include <SoftwareSerial.h>
 SoftwareSerial Serial1(0, 1); // RX, TX
-#define CO2S Serial1  //Select Serial'N here!
+
+#define USE_SOFTWARESERIAL
 #include <senseairs8.h>
 //END OF NOTICE
 
-senseAirCO2 co2sensor;
+senseAirCO2 co2sensor(&Serial1);
 
 void setup() {
   // put your setup code here, to run once:
