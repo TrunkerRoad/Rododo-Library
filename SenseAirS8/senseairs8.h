@@ -9,7 +9,7 @@ Designed for LASS(location aware sensing system)
 
 #ifndef SENSEAIRS8_H
 #define SENSEAIRS8_H
-#define TimeOut 100
+#define TimeOut 250
 
 #include "CRC16.h"
 #include "SoftwareSerial.h"
@@ -34,9 +34,9 @@ private:
 #endif
   boolean _readComplete = false;  // whether the string is complete
   byte _message[8] = {0xFE, 0x04, 0x00, 0x00, 0x00, 0x04, 0xE5, 0xC6};
-   byte _incomeByte[13];
-   byte _readcount;
-   void resetBuffer(void);
+  byte _incomeByte[13];
+  byte _readcount;
+  void resetBuffer(void);
   void serialRead(void);
 };
 #endif
@@ -45,12 +45,10 @@ private:
 #ifdef USE_SOFTWARESERIAL
 senseAirCO2::senseAirCO2(SoftwareSerial *ser){
   CO2S=ser;
-  CO2S->begin(9600);
 }
 #else
 senseAirCO2::senseAirCO2(HardwareSerial *ser){
   CO2S=ser;
-  CO2S->begin(9600);
 }
 #endif
 
@@ -64,9 +62,9 @@ uint16_t senseAirCO2::getValue(void){
     crc =_mycrc.CRC16(_incomeByte,13);
     uint16_t co2;
     if(crc != 0){  
-      co2=0;
+    	co2=0;
     } else {
-      co2 =((unsigned int)_incomeByte[9]<<8) +(unsigned int)_incomeByte[10];
+    	co2 =((unsigned int)_incomeByte[9]<<8) +(unsigned int)_incomeByte[10];
     }
     return co2;
 }
@@ -89,7 +87,7 @@ void senseAirCO2::resetBuffer(void){
 }
 
 void senseAirCO2::serialRead(void) {
-  long startTime = millis();
+	long startTime = millis();
   while(true){
     if(CO2S->available()) {
       byte inChar = (byte)CO2S->read();
@@ -99,9 +97,9 @@ void senseAirCO2::serialRead(void) {
         _readComplete = true;
         break;
       }
-      if ((millis()-startTime)>TimeOut){
-        break;
-      }
     }
+	if ((millis()-startTime)>TimeOut){
+		break;
+	}
   }
 }
